@@ -2,7 +2,7 @@ import pytest
 from library import show_balance, read_int, read_date, read_rental, add_rental, init_books
 from rental import Rental
 from datetime import datetime
-
+import json
 
 @pytest.fixture
 def sample_books_filled():
@@ -23,11 +23,8 @@ def sample_books_filled():
 
 @pytest.fixture
 def empty_books():
-    return {
-        'LOTR 1': [],
-        'LOTR 2': [],
-        'LOTR 3': [],
-    }
+    with open('books.json', 'r') as file:
+        return json.load(file)
 
 
 def test_show_balance(sample_books_filled, capsys):
@@ -46,6 +43,8 @@ Statement for LOTR 3
 Total: CHF 263.6
 """
     assert captured.out == expected_output
+
+
 
 
 def test_init_books(empty_books):
