@@ -1,14 +1,10 @@
 from rental import Rental
 from datetime import datetime
-
+import json
 
 def init_books():
-    books = {
-        'LOTR 1': [],
-        'LOTR 2': [],
-        'LOTR 3': [],
-    }
-    return books
+    with open('books.json', 'r') as file:
+        return json.load(file)
 
 
 def read_rental():
