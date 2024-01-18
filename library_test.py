@@ -4,6 +4,7 @@ from rental import Rental
 from datetime import datetime
 import json
 
+
 @pytest.fixture
 def sample_books_filled():
     books = {
@@ -43,8 +44,6 @@ Statement for LOTR 3
 Total: CHF 263.6
 """
     assert captured.out == expected_output
-
-
 
 
 def test_init_books(empty_books):
